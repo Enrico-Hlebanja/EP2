@@ -1,3 +1,4 @@
+
 def define_posicoes(linha,coluna,orientacao,tamanho):
     grid=[0]*10
     Tabuleiro = [grid]*10
