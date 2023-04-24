@@ -1,6 +1,4 @@
 def define_posicoes(linha,coluna,orientacao,tamanho):
-        grid=[0]*10
-        Tabuleiro = [grid]*10
         origem = [linha, coluna]
         posiçoes_do_barco = []
         if orientacao == 'vertical':
