@@ -30,5 +30,27 @@ def faz_jogada(tabuleiro,linha,coluna):
     else:
         tabuleiro[linha][coluna] ='-'
     return tabuleiro
+#posiciona frota
 
+def posiciona_frota(frota):
+    print(frota)
+    tabuleiro = [[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,]]
+    posicao = []
+    for chave in frota:
+        posicao.append(frota[chave][0])
+        if len(frota[chave])>1:
+            for k in range(1 , len(frota[chave])):
+                posicao.append(frota[chave][k])
+    for e in range(len(tabuleiro)):
+        for i in range(len(tabuleiro)):
+            for j in range(len(posicao)):
+                if [e,i] in posicao[j]:
+
+                    tabuleiro[e][i] = 1
+                    break
+                else:
+                    tabuleiro[e][i] = 0
+
+        
+    return tabuleiro
     
