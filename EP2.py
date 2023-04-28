@@ -53,17 +53,32 @@ def posiciona_frota(frota):
 
         
     return tabuleiro
-
+# afundados
 def afundados(frota,tabuleiro):
     navios_afundados = 0 
+    destruidos = []
+    posiçao = []
+    r= 0
     for chave in frota:
-        i = 0 
-        posiçao = frota[chave]
-        for e in range (len(posiçao)):
-            for j in range (len(e)): 
-                if tabuleiro[posiçao[j[0]]][posiçao[j[1]]] == 'X':
-                    i+=1
-                if i == len(posiçao):
-                    navios_afundados +=1
+        posiçao.append(frota[chave][0])
+        if len(frota[chave])>1:
+            for k in range(1 , len(frota[chave])):
+                posiçao.append(frota[chave][k])
+    for e in range (len (tabuleiro)):
+        for i in range (len (tabuleiro)):
+            if tabuleiro[e][i] == 'X':
+                for j in range(len(posiçao)):
+                    if [e,i] in posiçao[j]:
+                        destruidos.append([e,i])
+                        break
+    for chave in frota: 
+        r = 0
+        for n in destruidos:
+            for k in range (len(frota[chave])):
+                if n in frota[chave][k]:
+                    r+=1
+                    if r == len (frota[chave][k]):
+                        navios_afundados += 1
+                        r = 0
     return navios_afundados
         
