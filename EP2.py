@@ -72,9 +72,9 @@ def afundados(frota,tabuleiro):
                         destruidos.append([e,i])
                         break
     for chave in frota: 
-        r = 0
-        for n in destruidos:
-            for k in range (len(frota[chave])):
+        for k in range (len(frota[chave])):
+            r = 0
+            for n in destruidos:
                 if n in frota[chave][k]:
                     r+=1
                     if r == len (frota[chave][k]):
