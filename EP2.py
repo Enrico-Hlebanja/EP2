@@ -94,3 +94,35 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
                     if coordenada == e:
                         return False
     return True 
+
+
+# posicionando frota
+
+
+
+
+frota_tamanho = {"porta-aviões":{'quantidade':1,'tamanho':4},"navio-tanque":{'quantidade':2,'tamanho':3},"contratorpedeiro":{'quantidade':3,'tamanho':2},"submarino":{'quantidade':4,'tamanho':1}}
+frota = {}
+lista= []
+orientacao = 0
+for nome in frota_tamanho:
+    i=0
+    lista = []
+    while i <(frota_tamanho[nome]['quantidade']):
+        tamanho = frota_tamanho[nome]['tamanho']
+        print(f'Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}')
+        linha = int(input("linha: "))
+        coluna = int(input("coluna: "))
+        if nome != 'submarino':
+            orientacao = int(input("Orientação: "))
+        if orientacao == 1:
+            orientacao = 'vertical'
+        if orientacao == 2:
+            orientacao = 'horizontal'
+        if posicao_valida(frota, linha, coluna, orientacao, tamanho) == True:
+            lista.append(define_posicoes(linha,coluna,orientacao,tamanho))
+            frota[nome] = lista
+            i+=1
+        elif posicao_valida(frota, linha, coluna, orientacao, tamanho) == False:
+            print('Esta posição não está válida!')
+print(frota)
