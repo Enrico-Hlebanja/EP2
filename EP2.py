@@ -33,7 +33,7 @@ def faz_jogada(tabuleiro,linha,coluna):
 #posiciona frota
 
 def posiciona_frota(frota):
-    print(frota)
+    
     tabuleiro = [[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,],[0,0,0,0,0,0,0,0,0,0,]]
     posicao = []
     for chave in frota:
@@ -130,7 +130,7 @@ for nome in frota_tamanho:
             print('Esta posição não está válida!')
 
 
-            tabuleiro_oponente = posiciona_frota(frota_oponente)
+tabuleiro_oponente = posiciona_frota(frota_oponente)
 
 
 
