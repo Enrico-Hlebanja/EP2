@@ -1,3 +1,5 @@
+import random
+random.seed(2)
 def define_posicoes(linha,coluna,orientacao,tamanho):
         origem = [linha, coluna]
         posiçoes_do_barco = []
@@ -146,7 +148,8 @@ def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
     return texto
 
-
+jogadasAi = []
+tabuleiro = posiciona_frota(frota)
 while jogando:
     print(monta_tabuleiros(posiciona_frota(frota),tabuleiro_oponente))
     invalido =True
@@ -177,3 +180,17 @@ while jogando:
         if afundados(frota_oponente,tabuleiro_oponente)== 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             jogando = False
+        if afundados(frota_oponente,tabuleiro_oponente)!= 10:
+            invalido = True
+            while invalido:
+                LinhaAi = random.randint(0,9)
+
+                ColunaAi =random.randint(0,9)
+                if [LinhaAi,ColunaAi] not in jogadasAi:
+                    invalido = False
+                    jogadasAi.append([LinhaAi,ColunaAi])
+                    print(f'Seu oponente está atacando na linha {LinhaAi} e coluna {ColunaAi}')
+            tabuleiro = faz_jogada(tabuleiro,LinhaAi,ColunaAi)
+            if afundados(frota,tabuleiro)== 10:
+                print('Xi! O oponente derrubou toda a sua frota =(')
+                jogando = False
